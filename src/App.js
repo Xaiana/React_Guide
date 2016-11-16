@@ -134,35 +134,38 @@ class App extends React.Component {
     this.addLink = this.addLink.bind(this);
   }
 
-  addLink(newDescription, newUrl) {
-        this.setState(
-          {
-        description: newDescription,
-        url: newUrl
-          }
-        )
-    }
-
-
+  addLink() {
+    const newEntry = {
+     description: this.state.descriptionInput ,
+     url: this.state.urlInput
+   };
+    const newWeek = this.state.week1.concat(newEntry);
+    this.setState({
+      descriptionInput: '',
+      urlInput: '',
+      week1: newWeek
+    });
+  }
+  
   render() {
     return (
       <div>
         <Header header={"React Journal"} />
         <Week
+          id='week1'
           title={'Week 1'}
           week={this.state.week1}
-          addLink={this.addLink}
-          />
+        />
         <Week
+          id='week2'
           title={'Week 2'}
           week={this.state.week2}
-          addLink={this.addLink}
-          />
+        />
         <Week
+          id='week3'
           title={'Week 3'}
           week={this.state.week3}
-          addLink={this.addLink}
-          />
+        />
       </div>
     );
   }
