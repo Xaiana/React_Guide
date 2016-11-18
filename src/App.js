@@ -8,6 +8,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      descriptionValue: '',
+      urlValue: '',
       week1: [
         {
           description: 'Js-assessment',
@@ -134,19 +136,12 @@ class App extends React.Component {
     this.addLink = this.addLink.bind(this);
   }
 
-  addLink() {
-    const newEntry = {
-     description: this.state.descriptionInput ,
-     url: this.state.urlInput
-   };
-    const newWeek = this.state.week1.concat(newEntry);
-    this.setState({
-      descriptionInput: '',
-      urlInput: '',
-      week1: newWeek
-    });
+  addLink(resource, destination) { //resource is the package containing the new link object pair, destination is the week id to add to.
+    const _destination = this.state[destination]; //[destination] is in brackets because it's value is a string
+    _destination.push(resource) ;
+    this.setState({[destination] : _destination});
   }
-  
+
   render() {
     return (
       <div>
@@ -155,16 +150,19 @@ class App extends React.Component {
           id='week1'
           title={'Week 1'}
           week={this.state.week1}
+          addLink={this.addLink}
         />
         <Week
           id='week2'
           title={'Week 2'}
           week={this.state.week2}
+          addLink={this.addLink}
         />
         <Week
           id='week3'
           title={'Week 3'}
           week={this.state.week3}
+          addLink={this.addLink}
         />
       </div>
     );

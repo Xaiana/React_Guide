@@ -20,6 +20,7 @@ export default class Week extends React.Component {
     event.preventDefault();
     const newResource = Object.assign({}, this.state);
     console.log(newResource);
+    this.props.addLink(newResource, this.props.id)
 
   }
 
