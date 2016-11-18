@@ -25,8 +25,8 @@ export default class Week extends React.Component {
   }
 
   render() {
-    const weekMap = this.props.week.map((weekItem, i) => {
-      return <li key={i}> <a href={weekItem.url}> {weekItem.description}</a></li>
+    const weekMap = this.props.links.map((linkItem, i) => {
+      return <li key={i}> <a href={linkItem.url}> {linkItem.description}</a></li>
     })
 
     return(
