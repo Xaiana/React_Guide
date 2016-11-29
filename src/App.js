@@ -21,16 +21,10 @@ class App extends React.Component {
       this.renderWeeks = this.renderWeeks.bind(this);
     }
 
-/*  logState() {
-    for (var i = 0; i < this.state.weeks.length; i++) {
-       console.log(this.state.weeks[i].links);
-    }
-  } */
-
- addWeek() {
-    const weeks = this.state.weeks;
-    const newWeek = weeks.push({});
-    this.setState({weeks});
+  addWeek(event) {
+    const resources = this.state.weeks;
+    const newWeekResource = resources.push({}); //add empty week object to this.state.weeks array
+    this.renderWeeks(newWeekResource, resources);
   }
 
   addLink(resource, destination) { //resource is the package containing the new link object pair, destination is the week id to add to.
@@ -39,20 +33,23 @@ class App extends React.Component {
     this.setState({[destination] : _destination});
   }
 
-/*  renderWeeks() {
-    return this.state.weeks[i].links.map((week, idx) => {
-      return <Week links={week.links} addLink={this.addLink} title={'Week ' + (idx + 1)} key={idx} index={idx} />;
+  renderWeeks(newWeekResource, destination) {
+    return this.state.weeks.map((week, idx) => {
+      return <Week
+              key={idx}
+              links={week.links}
+              addLink={this.addLink}
+              title={'Week ' + (idx + 1)}
+              addLink={this.addLink}
+            />;
     });
-  } */
+  }
 
   render() {
     return (
       <div>
         <Header header={"React Journal"} />
-        logState();
-        <Week links={"week1"} addLink={this.addLink} title={'Week' + 1} />
-        <Week links={"week2"} addLink={this.addLink} title={'Week' + 1} />
-        <Week links={"week3"} addLink={this.addLink} title={'Week' + 1} />
+        <Week renderWeeks={this.renderWeeks} />
       </div>
     );
   }

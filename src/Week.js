@@ -13,13 +13,13 @@ export default class Week extends React.Component {
   }
 
   handleChange(event) {
-    this.setState({[event.target.name]: event.target.value});
+    this.setState({[event.target.name]: event.target.value}); //accepts form input and sets it to state
   }
 
   handleSubmit(event) {
     event.preventDefault();
     const newResource = Object.assign({}, this.state);
-    this.props.addLink(newResource, this.props.id)
+    this.props.addLink(newResource, this.props.key)
 
   }
 
