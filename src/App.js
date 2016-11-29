@@ -49,7 +49,10 @@ class App extends React.Component {
     return (
       <div>
         <Header header={"React Journal"} />
-        <Week renderWeeks={this.renderWeeks} />
+        <form renderWeeks={this.renderWeeks}>
+        <Week />
+        <button>Submit</button>
+        </form>
       </div>
     );
   }

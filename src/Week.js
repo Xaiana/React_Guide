@@ -18,13 +18,13 @@ export default class Week extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const newResource = Object.assign({}, this.state);
-    this.props.addLink(newResource, this.props.key)
+    const newResource = Object.assign({}, this.state); // create object and assign updated state for each time a link is added
+    this.props.addLink(newResource, this.props.key) //assigns the newResource package to
 
   }
 
   render() {
-    const weekMap = this.props.links.map((linkItem, i) => {
+    const weekMap = this.props.weeks[i].links.map((linkItem, i) => {
       return <li key={i}> <a href={linkItem.url}> {linkItem.description}</a></li>
     })
 
