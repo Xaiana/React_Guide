@@ -11,9 +11,9 @@ class App extends React.Component {
       descriptionValue: '',
       urlValue: '',
       weeks: [
-          { links: 'Week 1' },
-          { links: 'Week 2' },
-          { links: 'Week 3' }
+          { links: [{description: 'anything', url: 'www.google.com'}] },
+          { links: [{description: 'anything', url: 'www.google.com'}] },
+          { links: [{description: 'anything', url: 'www.google.com'}] }
         ]
       }
       this.addLink = this.addLink.bind(this);
@@ -21,17 +21,17 @@ class App extends React.Component {
       this.renderWeeks = this.renderWeeks.bind(this);
     }
 
-  logState() {
+/*  logState() {
     for (var i = 0; i < this.state.weeks.length; i++) {
        console.log(this.state.weeks[i].links);
     }
-  }
+  } */
 
-  /* addWeek() {
+ addWeek() {
     const weeks = this.state.weeks;
     const newWeek = weeks.push({});
     this.setState({weeks});
-  } */
+  }
 
   addLink(resource, destination) { //resource is the package containing the new link object pair, destination is the week id to add to.
     const _destination = this.state[destination]; //[destination] is in brackets because it's value is a string
