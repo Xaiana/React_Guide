@@ -11,18 +11,15 @@ class App extends React.Component {
     this.state = {
       descriptionValue: '',
       urlValue: '',
-      weeks: [
-          { links: [{description: 'anything', url: 'www.google.com'}] },
-          { links: [{description: 'anything', url: 'www.google.com'}] },
-          { links: [{description: 'anything', url: 'www.google.com'}] }
-        ]
-      };
+      weeks: []
+    };
       this.addLink = this.addLink.bind(this);
       this.addWeek = this.addWeek.bind(this);
       this.renderWeeks = this.renderWeeks.bind(this);
-    }
+  }
 
-  addWeek() {
+  addWeek(e) {
+    e.preventDefault();
     const weeks = this.state.weeks.slice(0); // point in weeks array
     weeks.push(this.weekTemplate); //add empty week object
     this.setState({weeks});
