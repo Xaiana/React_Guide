@@ -7,23 +7,36 @@ import './App.css';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.weekTemplate = { links: [{description: '', url: ''}] };
     this.state = {
       descriptionValue: '',
       urlValue: '',
       weeks: []
     };
       this.addLink = this.addLink.bind(this);
-      this.addWeek = this.addWeek.bind(this);
+      this.addNewWeek = this.addNewWeek.bind(this);
       this.renderWeeks = this.renderWeeks.bind(this);
   }
 
-  addWeek(e) {
+  addNewWeek() {
+    const database = firebase.database();
+    const newWeek = { links: [
+      {description: "", url: ""}
+    ]};
+
+    const newWeekKey = database().ref().child('weeks').push().key;
+
+    const ubdates = {};
+    updates['/weeks/' + newWeekKey] = newWeek;
+
+    return database().ref().update(updates);
+  }
+
+  /*addWeek(e) {
     e.preventDefault();
     const weeks = this.state.weeks.slice(0); // point in weeks array
     weeks.push(this.weekTemplate); //add empty week object
     this.setState({weeks});
-  }
+  }*/
 
   addLink(resource, destination) { //resource is the package containing the new link object pair, destination is the week id to add to.
     const _destination = this.state.weeks[destination].links; //[destination] is in brackets because it's value is a string
@@ -44,11 +57,10 @@ class App extends React.Component {
   }
 
   render() {
-    const nextWeek = this.state.weeks.length + 1;
     return (
       <div>
         <Header header={"React Journal"} />
-        <button onClick={this.addWeek}> {/*addWeek is callback function*/}
+        <button onClick={this.addNewWeek}> {/*addWeek is callback function*/}
           AddWeek
         </button>
         <div>
