@@ -30,7 +30,7 @@ export default class Week extends React.Component {
     });
 
     return(
-      <div>
+      <div> 
         <h2>{this.props.title}</h2>
         {
           weekMap.length > 0 && // if weekMap has length greater than 0 then render weekMap

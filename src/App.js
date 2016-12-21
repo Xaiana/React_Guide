@@ -49,7 +49,7 @@ class App extends React.Component {
   render() {
     const nextWeek = this.state.weeks.length + 1;
     return (
-      <div>
+      <div className="App">
         <Header header={"React Journal"} />
         <button onClick={this.addWeek}> {/*addWeek is callback function*/}
           AddWeek
