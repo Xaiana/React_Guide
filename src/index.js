@@ -11,10 +11,14 @@ const config = {
   storageBucket: "react-bookmarks.appspot.com",
   messagingSenderId: "50545659800"
 };
-firebase.initializeApp(config);
+const fb = firebase.initializeApp(config)
+  .database()
+  .ref();
 
-
-ReactDOM.render(
-  <App />,
-  document.getElementById('root')
-);
+fb.once('value').then(snapshot => {
+  const store = snapshot.val();
+  ReactDOM.render(
+    <App {...store} />,
+    document.getElementById('root')
+  );
+})
