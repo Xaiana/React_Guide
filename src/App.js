@@ -19,24 +19,7 @@ class App extends React.Component {
       this.addWeek = this.addWeek.bind(this);
       this.renderWeeks = this.renderWeeks.bind(this);
   }
-
-  /*componentDidMount() {
-    //this.fbRef.set(json);
-  }*/
-
-  /*addNewWeek() {
-    const newWeek = { links: [
-      {description: "", url: ""}
-    ]};
-
-    //const newWeekKey = database().ref().child('weeks').push().key;
-
-    const updates = {};
-    updates['/weeks/' + newWeekKey] = newWeek;
-
-    this.fbRef.set(this.state);
-  }*/
-
+  
   addWeek(e) {
     e.preventDefault();
     const weeks = this.state.weeks.slice(0); // makes a copy of state to update before rendering, point in weeks array
